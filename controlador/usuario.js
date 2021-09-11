@@ -143,7 +143,7 @@ const verifiUsuario = async (req, res) => {
     if (response.rowCount > 0) {
       const usuario = response.rows[0];
       const decipher = Cipher.desencriptar(usuario.contraseña);
-      if (decipher === contraseña && usuario.estado_usr === "activado"){
+      if (decipher == contraseña && usuario.estado_usr == "activado"){
         const user = {
           usuario_id: usuario.usuario_id,
           nombre_pe: usuario.nombre_pe,
