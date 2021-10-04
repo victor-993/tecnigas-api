@@ -9,6 +9,7 @@ const {
   putPersona,
   delPersona,
   putPersonaId,
+  personaVentaInfo,
 } = require("../controlador/persona");
 
 const {
@@ -48,6 +49,8 @@ const {
   delProducto,
   hideProducto,
   getProductoAll,
+  getDetaPro,
+  putProDev
 } = require("../controlador/producto.js");
 
 const {
@@ -62,6 +65,7 @@ const { postMovimiento } = require("../controlador/movimiento");
 
 const { 
   getCategoria,
+  getCategoriabyID,
   hideCategoria,
   getCategorias,
   categoriaUp,
@@ -84,14 +88,26 @@ router.post("/verifiusu/", verifiUsuario);
 router.post("/usuario", addUsuario);
 const {
   getDevolucion,
+  getDev,
+  getDetaDev,
   postDevolucion,
+  postDetaDev,
+  putDevolucion,
+  putDetaDev,
+  getDevoJDetalle,
+  eliminaDetaDev,
+  getDetaDevById,
+  deleteDev
 } = require("../controlador/devolucion.js");
+
 
 
 const { 
   getVenta,
   getDetallebyId,
-  getDetaPro,
+  getDetallebyVP,
+  putVenta,
+  putDetaVent,
   getLastVenta,
   postVenta,
   postDetalleVenta,
@@ -100,12 +116,24 @@ const {
 // Rutas de devolución
 
 router.get("/devolucion", getDevolucion);
+router.get("/devolucion/:id_venta", getDev);
+router.get("/detadevo/:devolucion_id/:producto_id", getDetaDev);
+router.get("/listaDev", getDevoJDetalle);
+router.get("/detadevo/:devolucion_id", getDetaDevById);
 router.post("/devolucion", postDevolucion);
+router.post("/detadevo", postDetaDev);
+router.put("/devolucion/:devolucion_id", putDevolucion);
+router.put("/detadevo/:devolucion_id/:producto_id", putDetaDev);
+router.delete("/devolucion/:devolucion_id", deleteDev);
+router.delete("/detadevo/:devolucion_id/:producto_id", eliminaDetaDev);
 
 // Rutas de venta
 
 router.get("/venta", getVenta);
 router.get("/ventadetalle/:id_venta", getDetallebyId);
+router.get("/ventadetalle/:id_venta/:producto_id", getDetallebyVP);
+router.put("/venta/:id_venta", putVenta);
+router.put("/ventadetalle/:id_venta/:producto_id", putDetaVent);
 router.get("/detavenp/:id_venta/:id_producto", getDetaPro);
 router.get("/lastventa",getLastVenta);
 router.post("/postventa", postVenta);
@@ -121,6 +149,7 @@ router.get("/iva", getIva);
 // Rutas de Categoria
 
 router.get("/categorias", getCategoria);
+router.get("/categoriaID/:id_categoria", getCategoriabyID);
 router.post("/categoria", postCategoria);
 router.get("/categoriasH", getCategorias);
 router.put("/categorias/:id_categoria",hideCategoria);
@@ -145,6 +174,7 @@ router.get("/clipers", getClientePer);
 router.get("/persona", getPersona);
 router.get("/persona/:id", getPersById);
 router.get("/personac/:cedula", getPersonaCedula);
+router.get("/listaVpersona", personaVentaInfo);
 router.post("/persona", postPersona);
 router.put("/persona/:id", putPersona);
 router.put("/personaid/:id", putPersonaId);
@@ -175,6 +205,8 @@ router.put("/producto/:producto_id", putProducto);
 router.put("/productocantidad/:producto_id", putCantidadProducto);
 router.delete("/producto/:producto_id", delProducto);
 router.put("/product/:producto_id", hideProducto);
+router.get("/detapro/:id_venta/:id_producto", getDetaPro);
+router.put("/productodev/:producto_id/:cantidad_pro", putProDev);
 
 // routes Compra
 
