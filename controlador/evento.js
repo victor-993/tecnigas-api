@@ -4,17 +4,17 @@ const postEvento = async (req, res) => {
   try {
     const {
       title,
-    start,
-    end,
-    allDay,
-    descripcion,
+      start,
+      end,
+      allDay,
+      descripcion,
     } = req.body;
     const response = await pool.query(
       `INSERT INTO evento (title,
         start,
         end,
         allDay,
-        descripcion,)
+        descripcion)
        VALUES($1, $2, $3, $4, $5)`,[title,
         start,
         end,
