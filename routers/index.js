@@ -60,6 +60,12 @@ const {
   postCompraDet,
 } = require("../controlador/compra.js");
 
+const {
+  getEvento,
+  postEvento,
+  getEventoId,
+} = require("../controlador/evento.js");
+
 
 const { postMovimiento } = require("../controlador/movimiento");
 
@@ -222,5 +228,12 @@ router.post("/compraDet", postCompraDet);
 // routes Movimiento
 
 router.post("/movimiento", postMovimiento)
+
+
+// routes evento
+
+router.get("/evento", getEvento)
+router.get("/evento/:id", getEventoId)
+router.post("/evento", postEvento)
 
 module.exports = router;
